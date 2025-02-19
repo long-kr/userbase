@@ -1,4 +1,4 @@
-package com.bugblogs.blog.config;
+package com.userbase.user.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;

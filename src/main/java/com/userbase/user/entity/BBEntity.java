@@ -1,11 +1,12 @@
-package com.bugblogs.blog.entity;
+package com.userbase.user.entity;
 
 import java.util.Date;
+
+import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -1,8 +1,8 @@
-package com.bugblogs.blog.service;
-
-import com.bugblogs.blog.dto.UserDto;
+package com.userbase.user.service;
 
 import java.util.List;
+
+import com.userbase.user.dto.UserDto;
 
 public interface UserService {
     void createUser(UserDto userDto);

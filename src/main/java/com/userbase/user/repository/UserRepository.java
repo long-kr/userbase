@@ -1,10 +1,10 @@
-package com.bugblogs.blog.repository;
+package com.userbase.user.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.bugblogs.blog.entity.BBUser;
+import com.userbase.user.entity.BBUser;
 
 public interface UserRepository extends JpaRepository<BBUser, Long> {
     Optional<BBUser> findById(long id);

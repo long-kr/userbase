@@ -1,6 +1,6 @@
-package com.bugblogs.blog.entity;
+package com.userbase.user.entity;
 
-import com.bugblogs.blog.utils.UserRole;
+import com.userbase.user.utils.UserRole;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

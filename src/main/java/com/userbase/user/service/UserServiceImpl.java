@@ -1,18 +1,20 @@
-package com.bugblogs.blog.service;
-
-import com.bugblogs.blog.dto.UserDto;
-import com.bugblogs.blog.entity.BBUser;
-import com.bugblogs.blog.error.APIRequestException;
-import com.bugblogs.blog.error.BBlogErrorCode;
-import com.bugblogs.blog.repository.UserRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
+package com.userbase.user.service;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.userbase.user.dto.UserDto;
+import com.userbase.user.entity.BBUser;
+import com.userbase.user.error.APIRequestException;
+import com.userbase.user.error.BBlogErrorCode;
+import com.userbase.user.repository.UserRepository;
+
+import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
