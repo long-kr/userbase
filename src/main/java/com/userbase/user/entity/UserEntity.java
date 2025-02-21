@@ -13,25 +13,25 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = true, of = "email")
-@Table(name = "bbuser")
-public class BBUser extends BBEntity {
-    @Column(nullable = false, length = 50, name = "user_name")
+@Table(name = "userbase")
+public class UserEntity extends BaseEntity {
+    @Column(nullable = false, length = 50)
     private String username;
 
-    @Column(nullable = false, unique = true, name = "user_email")
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false, name = "user_password")
+    @Column(nullable = false)
     private String password;
 
     // 0 delete, 1 active, 2 draft
-    @Column(name = "user_status", nullable = false)
+    @Column(nullable = false)
     private int status = 1;
 
-    @Column(name = "user_pic")
+    @Column(nullable = true)
     private String pic;
 
-    @Column(name = "user_role", nullable = false)
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private UserRole role = UserRole.USER;
 }

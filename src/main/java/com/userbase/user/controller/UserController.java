@@ -31,16 +31,18 @@ public class UserController {
         return userService.getAll();
     }
 
+    @GetMapping(USER_ID)
+    public UserDto getUser(@PathVariable long id) {
+        return userService.findUserById(id);
+    }
+    
     @PostMapping(USER)
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(@RequestBody UserDto userDto) {
         userService.createUser(userDto);
     }
 
-    @GetMapping(USER_ID)
-    public UserDto getUser(@PathVariable long id) {
-        return userService.findUserById(id);
-    }
+   
 
     @PutMapping(USER_ID)
     @ResponseStatus(HttpStatus.NO_CONTENT)

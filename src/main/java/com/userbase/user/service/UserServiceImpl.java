@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.userbase.user.dto.UserDto;
-import com.userbase.user.entity.BBUser;
+import com.userbase.user.entity.UserEntity;
 import com.userbase.user.error.APIRequestException;
 import com.userbase.user.error.BBlogErrorCode;
 import com.userbase.user.repository.UserRepository;
@@ -21,36 +20,35 @@ import lombok.AllArgsConstructor;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
     @Override
     public List<UserDto> getAll() {
-        List<BBUser> users = userRepository.findAll();
+        List<UserEntity> users = userRepository.findAll();
         return users.stream().map(user -> mapToUserDto(user, new UserDto())).toList();
     }
 
     @Override
     public void createUser(UserDto userDto) {
-        Optional<BBUser> optionalUser = userRepository.findByEmail(userDto.getEmail());
+        Optional<UserEntity> optionalUser = userRepository.findByEmail(userDto.getEmail());
 
         if (optionalUser.isPresent()) {
             throw new APIRequestException(BBlogErrorCode.EMAIL_TAKEN);
         }
 
-        BBUser user = mapToUser(userDto, new BBUser());
+        UserEntity user = mapToUser(userDto, new UserEntity());
         userRepository.save(user);
     }
 
     @Override
     public UserDto findUserById(long id) {
-        BBUser user = userRepository.findById(id)
+        UserEntity user = userRepository.findById(id)
                 .orElseThrow(() -> new APIRequestException(BBlogErrorCode.USER_NOT_FOUND));
         return mapToUserDto(user, new UserDto());
     }
 
     @Override
     public UserDto updateUser(long id, UserDto userDto) {
-        BBUser user = userRepository.findById(id)
+        UserEntity user = userRepository.findById(id)
                 .map(oldUser -> mapToUser(userDto, oldUser))
                 .orElseThrow(() -> new APIRequestException(BBlogErrorCode.USER_NOT_FOUND));
         userRepository.save(user);
@@ -62,7 +60,7 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
-    private UserDto mapToUserDto(BBUser user, UserDto userDto) {
+    private UserDto mapToUserDto(UserEntity user, UserDto userDto) {
         userDto.setId(user.getId());
         userDto.setUsername(user.getUsername());
         userDto.setEmail(user.getEmail());
@@ -72,7 +70,7 @@ public class UserServiceImpl implements UserService {
         return userDto;
     }
 
-    private BBUser mapToUser(UserDto userDto, BBUser user) {
+    private UserEntity mapToUser(UserDto userDto, UserEntity user) {
         if (Objects.nonNull(userDto.getUsername())) {
             user.setUsername(userDto.getUsername());
         }
@@ -82,7 +80,7 @@ public class UserServiceImpl implements UserService {
         }
 
         if (Objects.nonNull(userDto.getPassword())) {
-            user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+            user.setPassword(userDto.getPassword());
         }
 
         if (Objects.nonNull(userDto.getStatus())) {
