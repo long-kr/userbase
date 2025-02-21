@@ -1,6 +1,6 @@
 package com.userbase.user.entity;
 
-import com.userbase.user.utils.UserRole;
+import com.userbase.user.utils.AuthoritiesConstants;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,5 +33,5 @@ public class UserEntity extends BaseEntity {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private UserRole role = UserRole.USER;
+    private String role = AuthoritiesConstants.USER;
 }

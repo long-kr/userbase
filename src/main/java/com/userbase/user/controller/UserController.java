@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.userbase.user.dto.UserDto;
 import com.userbase.user.service.UserService;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -35,13 +36,12 @@ public class UserController {
     public UserDto getUser(@PathVariable long id) {
         return userService.findUserById(id);
     }
-    
+
     @PostMapping(USER)
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(@RequestBody UserDto userDto) {
+    public void createUser(@Valid @RequestBody UserDto userDto) {
         userService.createUser(userDto);
     }
-
    
 
     @PutMapping(USER_ID)

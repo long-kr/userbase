@@ -14,7 +14,6 @@ import jakarta.validation.ReportAsSingleViolation;
 @Constraint(validatedBy = EnumValidatorImpl.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-
 @ReportAsSingleViolation
 public @interface EnumValidator {
     String[] acceptedValues();
