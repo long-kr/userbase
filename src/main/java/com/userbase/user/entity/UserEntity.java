@@ -7,13 +7,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = true, of = "email")
-@Table(name = "userbase")
+@Table(name = "userbase", 
+    uniqueConstraints = { 
+        @UniqueConstraint(columnNames = "email"),
+    }
+)
 public class UserEntity extends BaseEntity {
     @Column(nullable = false, length = 50)
     private String username;
