@@ -1,7 +1,6 @@
-package com.userbase.user.entity;
+package com.userbase.entity;
 
-import java.util.Date;
-
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -19,16 +18,12 @@ import lombok.Setter;
 public class BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @Column(nullable = false)
-    private Date createdOn = new Date();
+    private LocalDateTime createdOn = LocalDateTime.now();
 
     @Column(nullable = false)
-    private Date updatedOn;
-
-    // @Column(nullable = false)
-    // private Date updatedBy;
-
+    private LocalDateTime updatedOn = LocalDateTime.now();;
 }

@@ -1,4 +1,4 @@
-package com.userbase.user.utils;
+package com.userbase.common;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

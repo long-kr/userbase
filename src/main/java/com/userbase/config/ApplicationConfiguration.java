@@ -1,4 +1,4 @@
-package com.userbase.user.config;
+package com.userbase.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;

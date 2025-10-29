@@ -1,4 +1,4 @@
-package com.userbase.user.utils;
+package com.userbase.common;
 
 import java.util.ArrayList;
 import java.util.List;

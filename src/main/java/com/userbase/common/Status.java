@@ -1,7 +1,7 @@
-package com.userbase.user.utils;
+package com.userbase.common;
 
 public enum Status {
     ACTIVE,
-    DRAFT,
+    PENDING,
     DELETED
 }
