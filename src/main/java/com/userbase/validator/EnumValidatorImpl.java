@@ -1,4 +1,4 @@
-package com.userbase.common;
+package com.userbase.validator;
 
 import java.util.ArrayList;
 import java.util.List;

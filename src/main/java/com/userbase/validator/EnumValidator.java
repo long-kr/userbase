@@ -1,4 +1,4 @@
-package com.userbase.common;
+package com.userbase.validator;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 
 // DataSeeder.java
 @Configuration
-@Profile({ "dev", "local" })
+@Profile({ "dev" })
 @RequiredArgsConstructor
 public class DataSeeder {
 

@@ -17,9 +17,6 @@ import lombok.NoArgsConstructor;
 @Embeddable
 public class UserProfile {
     private String fullName;
-
     private String phoneNumber;
-
     private String avatarUrl;
-
 }
