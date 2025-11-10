@@ -3,8 +3,8 @@ package com.userbase.dto;
 import java.io.Serial;
 import java.io.Serializable;
 
-import com.userbase.common.Status;
-import com.userbase.common.UserRole;
+import com.userbase.entity.Status;
+import com.userbase.entity.UserRole;
 import com.userbase.entity.UserProfile;
 
 public record UserDto(

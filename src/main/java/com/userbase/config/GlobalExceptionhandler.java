@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
-import com.userbase.common.APIReponse;
 import com.userbase.exception.UserNotFoundException;
+import com.userbase.dto.APIReponse;
 import com.userbase.exception.InvalidUserDataException;
 
 /**
@@ -60,4 +60,13 @@ public class GlobalExceptionhandler {
                 APIReponse<Void> response = APIReponse.failure("Internal Server Error", ex.getMessage());
                 return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
+        // global exception handler
+        @ExceptionHandler(Exception.class)
+        public ResponseEntity<APIReponse<Void>> handleGlobalException(Exception ex, WebRequest request) {
+                LOG.error("Exception: {}", ex.getMessage(), ex);
+                APIReponse<Void> response = APIReponse.failure("Internal Server Error", ex.getMessage());
+                return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
 }

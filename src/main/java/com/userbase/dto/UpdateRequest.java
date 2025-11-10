@@ -5,13 +5,12 @@ import java.io.Serializable;
 
 import com.userbase.entity.UserProfile;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 
 public record UpdateRequest(
                 @Email String email,
                 String timezone,
-                @Valid UserProfile profile
+                UserProfile profile
 
 ) implements Serializable {
         @Serial

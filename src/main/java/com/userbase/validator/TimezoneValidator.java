@@ -1,27 +1,17 @@
 package com.userbase.validator;
 
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
-import java.time.ZoneId;
-import java.util.TimeZone;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+import java.lang.annotation.*;
 
-public class TimezoneValidator implements ConstraintValidator<ValidTimezone, String> {
-    
-    @Override
-    public void initialize(ValidTimezone constraintAnnotation) {
-    }
-    
-    @Override
-    public boolean isValid(String timezone, ConstraintValidatorContext context) {
-        if (timezone == null) {
-            return true; // Let @NotNull handle null validation
-        }
-        
-        try {
-            TimeZone.getTimeZone(ZoneId.of(timezone));
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+@Documented
+@Constraint(validatedBy = TimezoneValidatorImpl.class)
+@Target({ ElementType.FIELD })
+@Retention(RetentionPolicy.RUNTIME)
+public @interface TimezoneValidator {
+    String message() default "Invalid timezone";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 }

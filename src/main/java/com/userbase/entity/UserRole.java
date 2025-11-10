@@ -1,4 +1,4 @@
-package com.userbase.common;
+package com.userbase.entity;
 
 public enum UserRole {
     USER,

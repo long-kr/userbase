@@ -1,25 +1,24 @@
 package com.userbase.entity;
 
-import java.util.Set;
-
-import com.userbase.common.UserRole;
-import com.userbase.common.Status;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.persistence.Version;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
+@Builder
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true, of = "email")
-@Table(name = "userbase")
+// "user" is a reserved keyword in some SQL databases
+@Table(name = "user_service")
 public class User extends BaseEntity {
-    @Version
-    private Long version;
 
     @Column(nullable = false, unique = true)
     private String supabaseUserId;
@@ -30,6 +29,7 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private Status status;
 
+    @Builder.Default
     private String timezone = "UTC";
 
     @Column(nullable = false)
