@@ -13,7 +13,9 @@ import jakarta.persistence.Version;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
+@SuperBuilder(toBuilder = true)
 @MappedSuperclass
 @Setter
 @Getter
