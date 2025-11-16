@@ -2,6 +2,7 @@ package com.userbase.dto;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 import com.userbase.entity.Status;
 import com.userbase.entity.User;
@@ -15,7 +16,8 @@ public record UserDto(
         Status status,
         String timezone,
         UserRole role,
-        UserProfile profile)
+        UserProfile profile,
+        List<ApplicationDto> applications)
         implements Serializable {
 
     @Serial
@@ -29,7 +31,20 @@ public record UserDto(
                 user.getStatus(),
                 user.getTimezone(),
                 user.getRole(),
-                user.getProfile());
+                user.getProfile(),
+                null);
+    }
+
+    public static UserDto toDtoWithoutApplications(User user, List<ApplicationDto> applications) {
+        return new UserDto(
+                user.getId(),
+                user.getSupabaseUserId(),
+                user.getEmail(),
+                user.getStatus(),
+                user.getTimezone(),
+                user.getRole(),
+                user.getProfile(),
+                applications);
     }
 
 }
