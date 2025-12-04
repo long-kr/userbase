@@ -5,9 +5,13 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.UUID;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
 import lombok.Builder;
 
 @Builder
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public record ApplicationDto(
         UUID id,
         String jobId,
@@ -19,7 +23,7 @@ public record ApplicationDto(
         String notes,
         String status,
         Instant appliedOn,
-        Instant createOn) implements Serializable {
+        Instant createdOn) implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;

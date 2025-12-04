@@ -1,10 +1,13 @@
 package com.userbase.service;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.userbase.dto.APIReponse;
 import com.userbase.dto.ApplicationDto;
 import com.userbase.dto.CreateRequest;
 import com.userbase.dto.UpdateRequest;
@@ -44,6 +47,9 @@ public class UserService {
                     throw new UserNotFoundException(id);
                 });
 
+        ParameterizedTypeReference<APIReponse<List<ApplicationDto>>> typeRef = new ParameterizedTypeReference<>() {
+        };
+
         List<ApplicationDto> applications = webClientBuilder.build()
                 .get()
                 .uri("http://application-service/api/v1/applications",
@@ -54,8 +60,8 @@ public class UserService {
                             log.error("Error calling application-service: status={}", response.statusCode());
                             return response.createException();
                         })
-                .bodyToFlux(ApplicationDto.class)
-                .collectList()
+                .bodyToMono(typeRef)
+                .map(APIReponse::getData)
                 .block();
 
         UserDto userDto = new UserDto(user.getId(),

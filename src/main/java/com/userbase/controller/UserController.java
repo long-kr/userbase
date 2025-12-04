@@ -21,7 +21,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/api/{api-version}")
+@RequestMapping("/api")
 @AllArgsConstructor
 public class UserController {
 
